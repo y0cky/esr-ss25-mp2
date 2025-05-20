@@ -1,0 +1,57 @@
+#.gitignore
+
+# baseline: everything
+*
+
+# not this file itself
+!.gitignore
+
+# not these standard files
+!LICENSE
+!README.md
+
+# not tcl scripts, text and report files
+!*.tcl
+!*.txt
+!*.labrpt
+
+# not hardware exports
+!project*/
+!project*/*.xsa
+!*.xsa
+
+# Simulation waveform files
+!project*/*.wcfg
+!*.wcfg
+
+# not what's in constraints, csrc, hdlsrc, testbench, ip...
+!constraints/
+!constraints/*
+!constraints/**
+!csrc*/
+!csrc*/*
+!csrc*/**
+!hdlsrc/
+!hdlsrc/*
+!hdlsrc/**
+!testbench/
+!testbench/*
+!testbench/**
+!ip/
+!ip/*
+!ip/**
+!ip_hdlsrc/
+!ip_hdlsrc/*
+!ip_hdlsrc/**
+!ip_repo/
+!ip_repo/*
+!ip_repo/**
+!vitis_project
+!vitis_project/.keep
+
+# not Vitis GUI setting "Don't ask about experimental GUI"
+!vitis_project/.metadata
+!vitis_project/.metadata/.plugins
+!vitis_project/.metadata/.plugins/org.eclipse.core.runtime
+!vitis_project/.metadata/.plugins/org.eclipse.core.runtime/.settings
+!vitis_project/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.xilinx.sdx.core.prefs
