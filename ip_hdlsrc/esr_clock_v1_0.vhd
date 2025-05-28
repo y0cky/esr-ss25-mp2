@@ -404,15 +404,25 @@ begin
 	--------------------------
 	-- ESR clock operation
 	--------------------------
-	
+
 	-- ADD CLOCK-SPECIFIC IP HERE ---
 
 	-- assign control bits from control register
 
-		
+    SF <= Register0(0);
+    ST <= Register0(1);
+    TT <= Register0(2);
+    SA <= Register0(3);
+    IE <= Register0(4);
 
 
 	-- Make 1-cycle-long pulse signals from control bits
+	if IE and rising_edge(axi_aclk) then
+	    pulse <= 1;
+	elsif IE and falling_edge(axi_aclk) then
+	    pulse <= 0;
+	end if;
+	    
 
 	
 
