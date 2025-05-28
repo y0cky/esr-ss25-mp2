@@ -37,6 +37,9 @@
 !testbench/
 !testbench/*
 !testbench/**
+!esr_clock_1_0/
+!esr_clock_1_0/*
+!esr_clock_1_0/**
 !ip/
 !ip/*
 !ip/**

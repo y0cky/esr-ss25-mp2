@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="AXI_slave_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="AXI_slave_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="731.727 ns"></ZoomEndTime>
+      <Cursor1Time time="191.165 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="284"></NameColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="39" />
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_aclk">
+      <obj_property name="ElementShortName">s00_axi_aclk</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_aclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_aresetn">
+      <obj_property name="ElementShortName">s00_axi_aresetn</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_aresetn</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_awaddr">
+      <obj_property name="ElementShortName">s00_axi_awaddr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_awaddr[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_awprot">
+      <obj_property name="ElementShortName">s00_axi_awprot[2:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_awprot[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_awvalid">
+      <obj_property name="ElementShortName">s00_axi_awvalid</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_awvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_awready">
+      <obj_property name="ElementShortName">s00_axi_awready</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_awready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_wdata">
+      <obj_property name="ElementShortName">s00_axi_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_wstrb">
+      <obj_property name="ElementShortName">s00_axi_wstrb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_wstrb[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_wvalid">
+      <obj_property name="ElementShortName">s00_axi_wvalid</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_wvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_wready">
+      <obj_property name="ElementShortName">s00_axi_wready</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_wready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_bresp">
+      <obj_property name="ElementShortName">s00_axi_bresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_bresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_bvalid">
+      <obj_property name="ElementShortName">s00_axi_bvalid</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_bvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_bready">
+      <obj_property name="ElementShortName">s00_axi_bready</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_bready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_araddr">
+      <obj_property name="ElementShortName">s00_axi_araddr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_araddr[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_arprot">
+      <obj_property name="ElementShortName">s00_axi_arprot[2:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_arprot[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_arvalid">
+      <obj_property name="ElementShortName">s00_axi_arvalid</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_arvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_arready">
+      <obj_property name="ElementShortName">s00_axi_arready</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_arready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_rdata">
+      <obj_property name="ElementShortName">s00_axi_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/s00_axi_rresp">
+      <obj_property name="ElementShortName">s00_axi_rresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_rresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_rvalid">
+      <obj_property name="ElementShortName">s00_axi_rvalid</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_rvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/s00_axi_rready">
+      <obj_property name="ElementShortName">s00_axi_rready</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_rready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/INTERRUPT">
+      <obj_property name="ElementShortName">INTERRUPT</obj_property>
+      <obj_property name="ObjectShortName">INTERRUPT</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/AXI_slave_tb/dut/ERROR_CODE">
+      <obj_property name="ElementShortName">ERROR_CODE</obj_property>
+      <obj_property name="ObjectShortName">ERROR_CODE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/dut/set_frequency_pulse">
+      <obj_property name="ElementShortName">set_frequency_pulse</obj_property>
+      <obj_property name="ObjectShortName">set_frequency_pulse</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/system_frequency">
+      <obj_property name="ElementShortName">system_frequency[31:0]</obj_property>
+      <obj_property name="ObjectShortName">system_frequency[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/system_cycle_counter">
+      <obj_property name="ElementShortName">system_cycle_counter[31:0]</obj_property>
+      <obj_property name="ObjectShortName">system_cycle_counter[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/dut/second_pulse">
+      <obj_property name="ElementShortName">second_pulse</obj_property>
+      <obj_property name="ObjectShortName">second_pulse</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/dut/set_time_pulse">
+      <obj_property name="ElementShortName">set_time_pulse</obj_property>
+      <obj_property name="ObjectShortName">set_time_pulse</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/seconds">
+      <obj_property name="ElementShortName">seconds[5:0]</obj_property>
+      <obj_property name="ObjectShortName">seconds[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/minutes">
+      <obj_property name="ElementShortName">minutes[5:0]</obj_property>
+      <obj_property name="ObjectShortName">minutes[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/hours">
+      <obj_property name="ElementShortName">hours[5:0]</obj_property>
+      <obj_property name="ObjectShortName">hours[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/dut/take_time_pulse">
+      <obj_property name="ElementShortName">take_time_pulse</obj_property>
+      <obj_property name="ObjectShortName">take_time_pulse</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/seconds_taken">
+      <obj_property name="ElementShortName">seconds_taken[31:0]</obj_property>
+      <obj_property name="ObjectShortName">seconds_taken[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/minutes_taken">
+      <obj_property name="ElementShortName">minutes_taken[31:0]</obj_property>
+      <obj_property name="ObjectShortName">minutes_taken[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/hours_taken">
+      <obj_property name="ElementShortName">hours_taken[31:0]</obj_property>
+      <obj_property name="ObjectShortName">hours_taken[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/AXI_slave_tb/dut/set_alarm_pulse">
+      <obj_property name="ElementShortName">set_alarm_pulse</obj_property>
+      <obj_property name="ObjectShortName">set_alarm_pulse</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/alarm_seconds">
+      <obj_property name="ElementShortName">alarm_seconds[5:0]</obj_property>
+      <obj_property name="ObjectShortName">alarm_seconds[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/alarm_minutes">
+      <obj_property name="ElementShortName">alarm_minutes[5:0]</obj_property>
+      <obj_property name="ObjectShortName">alarm_minutes[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/AXI_slave_tb/dut/alarm_hours">
+      <obj_property name="ElementShortName">alarm_hours[5:0]</obj_property>
+      <obj_property name="ObjectShortName">alarm_hours[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER esr_clock
+	OPTION supported_peripherals = (esr_clock);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = esr_clock;
+END DRIVER
