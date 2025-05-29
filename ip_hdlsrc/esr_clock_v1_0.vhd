@@ -404,50 +404,161 @@ begin
 	--------------------------
 	-- ESR clock operation
 	--------------------------
-
+	
 	-- ADD CLOCK-SPECIFIC IP HERE ---
 
 	-- assign control bits from control register
+    SF <= Register0(0); -- SET_FREQUENCY
+    ST <= Register0(1); -- SET_TIME
+    TT <= Register0(2); -- TAKE_TIME
+    SA <= Register0(3); -- SET_ALARM
+    IE <= Register0(4); -- INTERRUPT_ENABLE
 
-    SF <= Register0(0);
-    ST <= Register0(1);
-    TT <= Register0(2);
-    SA <= Register0(3);
-    IE <= Register0(4);
+		
 
 
 	-- Make 1-cycle-long pulse signals from control bits
-	if IE and rising_edge(axi_aclk) then
-	    pulse <= 1;
-	elsif IE and falling_edge(axi_aclk) then
-	    pulse <= 0;
-	end if;
-	    
+    signal SF_prev, ST_prev, TT_prev, SA_prev : std_logic := '0'; -- previous values of control bits, used to detect rising edges
+
+    process(clock) -- Synchronize control bits to clock
+    begin
+        if rising_edge(clock) then -- on clock edge
+            if reset = '1' then 
+                SF_prev <= '0'; ST_prev <= '0'; TT_prev <= '0'; SA_prev <= '0'; -- reset all control bits
+            else
+                SF_prev <= SF; -- store previous value of control bits
+                ST_prev <= ST;
+                TT_prev <= TT;
+                SA_prev <= SA;
+            end if;
+        end if;
+    end process;
+
+    set_frequency_pulse <= SF and not SF_prev; -- not SF_prev means that the pulse is generated only once, when SF changes from '0' to '1'
+    set_time_pulse      <= ST and not ST_prev;
+    take_time_pulse     <= TT and not TT_prev;
+    set_alarm_pulse     <= SA and not SA_prev;
 
 	
 
 	
 	-- Set a new system speed (clock frequency) and reset cycle counter with "SET_FREQUENCY" pulse
 	-- Count cycles and make once-a-second pulse
+    process(clock)
+    begin
+        if rising_edge(clock) then
+            if reset = '1' or set_frequency_pulse = '1' then -- reset or set frequency
+                system_cycle_counter <= (others => '0');
+                if set_frequency_pulse = '1' then -- set frequency to value in Register1
+                    system_frequency <= unsigned(Register1); -- set system frequency to value in Register1
+                else
+                    system_frequency <= DEFAULT_SYSTEM_FREQUENCY; -- default system frequency
+                end if;
+            elsif system_cycle_counter = system_frequency - 1 then -- if cycle counter reached system frequency
+                system_cycle_counter <= (others => '0'); -- reset cycle counter
+            else
+                system_cycle_counter <= system_cycle_counter + 1; -- increment cycle counter
+            end if;
+        end if;
+    end process;
+
+    second_pulse <= '1' when system_cycle_counter = system_frequency - 1 else '0'; -- generate a pulse every system_frequency cycles
 
 
 	
 	-- Write main h:m:s counting process
 	-- include "SET_TIME" mechanism (with higher priority than counting)
+    process(clock)
+    begin
+        if rising_edge(clock) then
+            if reset = '1' then
+                seconds <= (others => '0');
+                minutes <= (others => '0');
+                hours   <= (others => '0');
+            elsif set_time_pulse = '1' then
+                seconds <= unsigned(Register2(5 downto 0)); -- set seconds from Register2
+                minutes <= unsigned(Register3(5 downto 0));
+                hours   <= unsigned(Register4(5 downto 0));
+            elsif second_pulse = '1' then -- increment time on every second pulse
+                if seconds = 59 then -- if seconds overflow
+                    seconds <= (others => '0'); -- reset seconds
+                    if minutes = 59 then -- if minutes overflow
+                        minutes <= (others => '0'); -- reset minutes
+                        hours <= (hours + 1) mod 24; -- increment hours, wrap around at 24
+                    else
+                        minutes <= minutes + 1; -- increment minutes
+                    end if;
+                else
+                    seconds <= seconds + 1; -- increment seconds
+                end if;
+            end if;
+        end if;
+    end process;
 
 	
 
 	-- Take snapshots of counter values on "TAKE_TIME" pulse
+    process(clock)
+    begin
+        if rising_edge(clock) then
+            if reset = '1' then
+                seconds_taken <= (others => '0');
+                minutes_taken <= (others => '0');
+                hours_taken   <= (others => '0');
+            elsif take_time_pulse = '1' then
+                seconds_taken <= std_logic_vector(resize(seconds, 32)); -- resize to 32 bits because AXI interface uses 32-bit registers
+                minutes_taken <= std_logic_vector(resize(minutes, 32));
+                hours_taken   <= std_logic_vector(resize(hours, 32));
+            end if;
+        end if;
+    end process;
+
+    Register5 <= seconds_taken; -- store taken seconds
+    Register6 <= minutes_taken;
+    Register7 <= hours_taken;
+
 
 
 
 	-- Set alarm h:m:s  on "SET_ALARM" pulse
+    process(clock)
+    begin
+        if rising_edge(clock) then
+            if reset = '1' then
+                alarm_seconds <= (others => '0');
+                alarm_minutes <= (others => '0');
+                alarm_hours   <= (others => '0');
+            elsif set_alarm_pulse = '1' then -- set alarm time from registers
+                alarm_seconds <= unsigned(Register2(5 downto 0)); -- set seconds from Register2
+                alarm_minutes <= unsigned(Register3(5 downto 0));
+                alarm_hours   <= unsigned(Register4(5 downto 0));
+            end if;
+        end if;
+    end process;
+
 
 
 	
 	-- Generate/assign signal "interrupt"
 	-- Set the interrupt on the next second_pulse after clock has reached alarm time
 	-- NOT on the ongoing state of alarm time
+
+
+    process(clock)
+    begin
+        if rising_edge(clock) then
+            if reset = '1' then
+                interrupt <= '0';
+            elsif second_pulse = '1' and -- check for second pulse
+                seconds = alarm_seconds and -- check if seconds match alarm time and
+                minutes = alarm_minutes and -- minutes match alarm time and
+                hours   = alarm_hours then -- hours match alarm time
+                interrupt <= '1'; -- set pending interrupt
+            elsif IE = '0' then -- if interrupt enable is 0
+                interrupt <= '0'; -- clear interrupt if interrupt enable is 0
+            end if;
+        end if;
+    end process;
 
     irq <= interrupt; -- KEEP THIS, do not change output signal 'irq' directly
 
@@ -526,3 +637,4 @@ DEBUG_thours <= hours; end if; if (buffer_rdata='1') then DEBUG_sardata <= unsig
 -- synthesis translate_on
 
 end arch_imp;
+
